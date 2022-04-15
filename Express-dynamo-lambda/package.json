@@ -1,0 +1,24 @@
+{
+  "name": "express-lambda",
+  "version": "1.0.0",
+  "description": "",
+  "main": "handler.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "aws-sdk": "^2.1115.0",
+    "body-parser": "^1.20.0",
+    "express": "^4.17.3",
+    "glob": "^8.0.1",
+    "serverless-http": "^3.0.1"
+  },
+  "devDependencies": {
+    "serverless-dynamodb-local": "^0.2.40",
+    "serverless-offline": "^8.7.0",
+    "serverless-plugin-include-dependencies": "^5.0.0"
+  }
+}
