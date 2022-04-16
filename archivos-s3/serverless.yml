@@ -1,0 +1,31 @@
+service: nodejs-s3
+
+frameworkVersion: '3'
+
+custom:
+  bucket: sls-s3-test
+  default_stage: dev
+  apigwBinary:
+    types:
+      - '*/*'
+
+plugins:
+  - serverless-apigw-binary
+  - 
+provider:
+  name: aws
+  runtime: nodejs12.x
+  profile: default
+  stage: ${opt:stage, self:custom.default_stage}
+
+
+
+functions:
+  uploadS3File:
+    handler: handler.app
+    enviroment:
+      bucket: ${self:custom.bucket}-${self:provider.stage}
+    events:
+      - http:
+          path: /upload
+          method: post
