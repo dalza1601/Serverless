@@ -1,0 +1,20 @@
+service: api-keys # NOTE: update this with your service name
+
+provider:
+  name: aws
+  runtime: nodejs8.10
+  profile: curso-sls
+  stage: ${opt:stage, 'dev'}
+  region: us-east-1
+  
+  apiKeys:
+    - ${file(./config.${self:provider.stage}.json):API_KEY}
+
+functions:
+  hello:
+    handler: handler.hello
+    events:
+    - http:
+        path: /
+        method: get
+        private: true
